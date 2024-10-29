@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const app = express();
 const stuffRoutes = require('./routes/stuff');
 const userRoutes = require('./routes/user');
+const path = require('path');
 
 mongoose.connect('mongodb+srv://mathieujourdanpro:dAu6B7jycxwMVdBZ@cluster0.za76m.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
   })
@@ -10,6 +11,7 @@ mongoose.connect('mongodb+srv://mathieujourdanpro:dAu6B7jycxwMVdBZ@cluster0.za76
     .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 app.use(express.json());
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
