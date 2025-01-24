@@ -4,9 +4,9 @@ const app = express();
 const stuffRoutes = require('./routes/stuff');
 const userRoutes = require('./routes/user');
 const path = require('path');
-const MongoApiKey = 'Your key';
+const MongoApiKey = require('./config');
 
-mongoose.connect(MongoApiKey, {
+mongoose.connect(MongoApiKey.apiKey.key, {
   })
     .then(() => console.log('Connexion à MongoDB réussie !'))
     .catch(() => console.log('Connexion à MongoDB échouée !'));
